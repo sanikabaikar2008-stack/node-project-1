@@ -7,8 +7,6 @@ const connectDB = async () => {
     } catch (err) {
         console.error(err.message);
     }
-} 
+}; 
 
-connectDB();
-
-module.exports = mongoose;
+module.exports = connectDB;

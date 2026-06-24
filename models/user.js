@@ -5,11 +5,18 @@ const userSchema = new mongoose.Schema({
     email: String,
     password: String,
     mobileNumber: String,
-    role: String,
+    version: {
+        type: Number,
+        default: 1,
+    },
+    role: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'role',
+    },
 },{
     timestamps: true,
     collection: 'users',
 });
-
 const User = mongoose.model('User', userSchema);
+
 module.exports = User;

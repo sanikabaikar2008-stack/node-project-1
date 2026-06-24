@@ -1,11 +1,18 @@
 const express = require('express');
-const connectDB = require('./config/db');
 const app = express();
+
+const connectDB = require('./config/db');
+connectDB();
+
 const userRoutes = require('./routes/user');
+const authRoutes = require('./routes/auth');
+const roleRoutes = require('./routes/role');
 app.use(express.json());
 
 app.use('/user', userRoutes);
-app.get('./', (req, res) => {
+app.use('/auth', authRoutes);
+app.use('/role', roleRoutes);
+app.get('/', (req, res) => {
     res.send("Hello World");
 });
 
